@@ -25,7 +25,7 @@ This is a FastAPI-based backend application for managing music routines with Spo
 ├── db.py                  # Database session management
 ├── database.py            # Database initialization
 ├── models.py              # SQLAlchemy models (User, Song, Session, SpotifyState)
-├── schemas.py             # Pydantic schemas for request/response validation
+├── schema.py              # Pydantic schemas for request/response validation
 ├── crud.py                # Database operations (CRUD functions)
 ├── auth.py                # Auth utilities (token creation, password hashing)
 ├── auth_utils.py          # Auth dependencies (get_current_user, get_db)
@@ -115,7 +115,7 @@ This is a FastAPI-based backend application for managing music routines with Spo
 
 ### Creating a New Protected Endpoint
 ```python
-@router.get("/endpoint", response_model=schemas.ResponseModel)
+@router.get("/endpoint", response_model=schema.ResponseModel)
 def endpoint_name(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
@@ -136,7 +136,7 @@ def function_name(db: DBSession, param: Type) -> ReturnType:
 
 ### Adding a New Model
 1. Define in `models.py` using SQLAlchemy
-2. Create corresponding Pydantic schemas in `schemas.py` (Create, Out, Update if needed)
+2. Create corresponding Pydantic schemas in `schema.py` (Create, Out, Update if needed)
 3. Add CRUD operations in `crud.py`
 4. Create router endpoints in appropriate file under `routers/`
 
